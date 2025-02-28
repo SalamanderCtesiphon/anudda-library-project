@@ -43,8 +43,8 @@ function displayBooks(bookDisplay) {
 
 displayBooks(bookDisplay);
 const newBook = document.querySelector("#newBook");
-newBook.addEventListener("click", () => {
-  console.log("success");
+newBook.addEventListener("click", (newBook) => {
+  newBook.showModal()  
 });
 
 
