@@ -42,8 +42,10 @@ function displayBooks(bookDisplay) {
 };
 
 displayBooks(bookDisplay);
+const newBook = document.querySelector("#newBook");
+newBook.addEventListener("click", () => {
+  console.log("success");
+});
 
-myLibrary.forEach((value) => {
-    
-    
-  });
+
+
