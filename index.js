@@ -42,9 +42,11 @@ function displayBooks(bookDisplay) {
 };
 
 displayBooks(bookDisplay);
-const newBook = document.querySelector("#confirmBtn");
-newBook.addEventListener("click", (newBook) => {
-  newBook.showModal()  
+const newBook = document.querySelector("#newBook");
+const modal = document.querySelector('#addBook');
+newBook.addEventListener("click", (modal) => {
+  console.log("button clicked");
+  modal.showModal()  
 });
 
 
