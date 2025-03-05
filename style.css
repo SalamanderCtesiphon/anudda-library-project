@@ -9,3 +9,15 @@
   padding: 10px;
   margin: 20px;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  aligh-items: flex-start;
+}
+
+label {
+  display: flex;
+  justify-content: space-between;
+  margin: 4px;
+}
