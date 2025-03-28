@@ -1,5 +1,4 @@
 const myLibrary =[];
-const confirmBtn = document.querySelector("#confirmBtn")
 function Book(title, author, pages, haveRead) {
   this.title = title;
   this.author = author;
