@@ -35,6 +35,17 @@ function displayBooks(bookDisplay) {
     const bookAuthor = document.createElement("p");
     const bookPages = document.createElement("p");
     const bookHaveRead = document.createElement("p");
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "Remove";
+    removeBtn.addEventListener("click", () => {
+      const index = myLibrary.findIndex(book => book.id === obj.id);
+      if (index !== -1) {
+        myLibrary.splice(index, 1); // Remove the book from the library
+        bookDisplay.innerHTML = ""; // Clear the display
+        displayBooks(bookDisplay); // Redisplay the books
+      }
+    });
+    bookCard.appendChild(removeBtn);
     bookCard.classList.add("card");
     bookTitle.textContent = obj.title;
     bookAuthor.textContent = obj.author;
@@ -81,7 +92,8 @@ confirmBtn.addEventListener("click", (e) => {
 
 // Event listener for the "Cancel" button in the dialog
 const cancelBtn = document.querySelector("#cancelBtn");
-cancelBtn.addEventListener("click", () => {
+cancelBtn.addEventListener("click", (e) => {
+  e.preventDefault(); // Prevent the default form submission
   dialog.close(); // Close the dialog without adding a book
 });
 
