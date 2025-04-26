@@ -35,6 +35,13 @@ function displayBooks(bookDisplay) {
     const bookAuthor = document.createElement("p");
     const bookPages = document.createElement("p");
     const bookHaveRead = document.createElement("button");
+    const consoleLog = document.createElement("button");
+    consoleLog.textContent = "Console Log";
+    consoleLog.addEventListener("click", () => {
+      console.log(obj.info()); // Log the book info to the console
+    }
+    );
+    bookCard.appendChild(consoleLog);
     bookHaveRead.textContent = obj.haveRead;
     bookHaveRead.addEventListener("click", () => {
       // Toggle the haveRead status
