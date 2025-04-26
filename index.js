@@ -1,4 +1,6 @@
 const myLibrary =[];
+
+// Book constructor function
 function Book(title, author, pages, haveRead) {
   this.title = title;
   this.author = author;
@@ -9,16 +11,20 @@ function Book(title, author, pages, haveRead) {
   };
 };
 
+// Function to add a book to the library
 function addBookToLibrary(title, author, pages, haveRead) {
   const newBook = new Book(title, author, pages, haveRead);
   myLibrary.push(newBook);
   return myLibrary;
 };
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295 pages", "have read");
-addBookToLibrary("rando", "rando", "rando", "rando");
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295 pages", "have read");
-addBookToLibrary("rando", "rando", "rando", "rando");
 
+// Adding some initial books to the library
+addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", "180 pages", "have read");
+addBookToLibrary("1984", "George Orwell", "328 pages", "have read");
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295 pages", "have read");
+addBookToLibrary("The Catcher in the Rye", "J.D. Salinger", "277 pages", "have read");
+
+// Function to display books in the library
 const bookDisplay = document.querySelector("#bookDisplay");
 function displayBooks(bookDisplay) {
   for(const obj of myLibrary) {
@@ -41,12 +47,15 @@ function displayBooks(bookDisplay) {
 };
 
 displayBooks(bookDisplay);
+
+// Event listener for the "Add New Book" button
 const newBook = document.querySelector("#newBook");
 const dialog = document.querySelector("dialog");
 newBook.addEventListener("click", () => {
   dialog.showModal();  
 });
 
+// Event listener for the "Confirm" button in the dialog
 const confirmBtn = document.querySelector("#confirmBtn");
 
 confirmBtn.addEventListener("click", (e) => {
@@ -67,6 +76,8 @@ confirmBtn.addEventListener("click", (e) => {
   document.querySelector("#pages").value = "";
   document.querySelector("#haveRead").value = "";
 });
+
+// Event listener for the "Cancel" button in the dialog
 const cancelBtn = document.querySelector("#cancelBtn");
 cancelBtn.addEventListener("click", () => {
   dialog.close(); // Close the dialog without adding a book
