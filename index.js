@@ -47,5 +47,28 @@ newBook.addEventListener("click", () => {
   dialog.showModal();  
 });
 
+const confirmBtn = document.querySelector("#confirmBtn");
 
+confirmBtn.addEventListener("click", (e) => {
+  e.preventDefault(); // Prevent the default form submission
+  const title = document.querySelector("#title").value;
+  const author = document.querySelector("#author").value;
+  const pages = document.querySelector("#pages").value;
+  const haveRead = document.querySelector("#haveRead").value;
+  addBookToLibrary(title, author, pages, haveRead);
+  bookDisplay.innerHTML = ""; // Clear the display
+  displayBooks(bookDisplay); // Redisplay the books
+  dialog.close(); // Close the dialog
+  console.log(myLibrary); // Log the updated library to the console
+
+  // Clear the form fields
+  document.querySelector("#title").value = "";
+  document.querySelector("#author").value = "";
+  document.querySelector("#pages").value = "";
+  document.querySelector("#haveRead").value = "";
+});
+const cancelBtn = document.querySelector("#cancelBtn");
+cancelBtn.addEventListener("click", () => {
+  dialog.close(); // Close the dialog without adding a book
+});
 
