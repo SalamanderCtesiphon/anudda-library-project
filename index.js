@@ -1,11 +1,13 @@
 const myLibrary =[];
 
 // Book constructor function
-function Book(title, author, pages, haveRead) {
+function Book(title, author, pages, haveRead, id) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.haveRead = haveRead;
+  this.id = id || Math.floor(Math.random() * 10000); // Generate a random ID if not provided
+  // Method to return book information
   this.info = function () {
     return `${this.title} by ${this.author}, ${this.pages}, ${this.haveRead}`;
   };
