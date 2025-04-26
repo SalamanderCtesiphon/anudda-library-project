@@ -6,7 +6,7 @@ function Book(title, author, pages, haveRead, id) {
   this.author = author;
   this.pages = pages;
   this.haveRead = haveRead;
-  this.id = id || Math.floor(Math.random() * 10000); // Generate a random ID if not provided
+  this.id = Math.floor(Math.random() * 10000); // Generate a random ID if not provided
   // Method to return book information
   this.info = function () {
     return `${this.title} by ${this.author}, ${this.pages}, ${this.haveRead}`;
@@ -34,7 +34,18 @@ function displayBooks(bookDisplay) {
     const bookTitle = document.createElement("h3");
     const bookAuthor = document.createElement("p");
     const bookPages = document.createElement("p");
-    const bookHaveRead = document.createElement("p");
+    const bookHaveRead = document.createElement("button");
+    bookHaveRead.textContent = obj.haveRead;
+    bookHaveRead.addEventListener("click", () => {
+      // Toggle the haveRead status
+      if (bookHaveRead.textContent === "have read") {
+        bookHaveRead.textContent = "not read";
+      } else {
+        bookHaveRead.textContent = "have read";
+      }
+    }
+    );
+    // Create a remove button to delete the book
     const removeBtn = document.createElement("button");
     removeBtn.textContent = "Remove";
     removeBtn.addEventListener("click", () => {
@@ -76,7 +87,20 @@ confirmBtn.addEventListener("click", (e) => {
   const title = document.querySelector("#title").value;
   const author = document.querySelector("#author").value;
   const pages = document.querySelector("#pages").value;
-  const haveRead = document.querySelector("#haveRead").value;
+  const readStatus = document.querySelector("#haveRead").value;
+  let haveRead = "";
+  if (readStatus === "yes") {
+    haveRead = "have read";
+  }
+  else {
+    haveRead = "not read";
+  }
+  // Validate the form fields
+  if (!title || !author || !pages || !haveRead) {
+    alert("Please fill in all fields.");
+    return;
+  }
+  // Add the new book to the library and update the display
   addBookToLibrary(title, author, pages, haveRead);
   bookDisplay.innerHTML = ""; // Clear the display
   displayBooks(bookDisplay); // Redisplay the books
